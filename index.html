@@ -1,0 +1,159 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sarabun">
+<style>
+    * {
+        font-family: "Sarabun", sans-serif;
+    }
+
+    .header {
+        border-bottom: 2px black solid;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .body-container {
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        /* flex-grow: 3; */
+    }
+
+    .body-header {
+       align-items: center;
+    }
+
+    .body-content {
+        padding: 10px;
+    }
+
+    .body-detail {
+        background-color: red;
+    }
+
+    .containerDetail {
+        display: flex;
+        justify-content: space-evenly;
+    }
+</style>
+<body>
+    <div class='header'>
+        สมุนไพรไทย 22 ชนิดเสี่ยงสูญพันธุ์ ประกาศคุ้มครองและควบคุม 7 ชนิด
+    </div>
+    <div class="body-header">
+        <ol class="body-container">
+            <li>
+                <button class="body-content" type="button" onclick="showDetail(this)" value="ถั่วดินโคก" id=1>
+                    <h3 id="plant-1" value="ถั่วดินโคก">ถั่วดินโคก</h3>
+                    <img src="img-1.jpg">
+                </button>
+            </li>
+            <li>
+                <button class="body-content" type="button" onclick="showDetail(this)" value="เทพทาโร" id=2>
+                    <h3 id="plant-2" value="เทพทาโร">เทพทาโร</h3>
+                    <img src="img-1.jpg">
+                </button>
+            </li>
+            <li>
+                <h3>มะตูมนิ่ม</h3>
+                <img src="img-1.jpg">
+            </li>
+            <li>
+                <h3>มะหาด</h3>
+                <img src="img-1.jpg">
+            </li>
+            <li>
+                <h3>เร่ว</h3>
+                <img src="img-1.jpg">
+            </li>
+            <li>
+                <h3>หัวร้อยรู</h3>
+                <img src="img-1.jpg">
+            </li>
+            <li>
+                <h3>กระทุ่มนา</h3>
+                <img src="img-1.jpg">
+            </li>
+        </ol>
+    </div>
+    <div>
+        <div class='body-detail' id="detail" value="-"></div>
+    </div>
+    <script>
+
+        var plantDetail = document.getElementById("detail");
+
+        var containerBodyDetail = document.getElementById("detail");
+
+        var containerValue = containerBodyDetail.getAttribute('value');
+
+        function showDetail(element) {
+            var plantId = element.id;
+            var plantName = element.value;
+            if(plantName === "ถั่วดินโคก") {
+                console.log(containerValue);
+                var containerDetail = document.createElement("div");
+                var tableDetail = document.createElement("table");
+                var Detail1Row = document.createElement("tr");
+                var Detail1NameHeader = document.createElement("th");
+                var Detail1Name = document.createElement("td"); 
+                var Detail1Detail = document.createElement("td");
+                
+                Detail1NameHeader.textContent = 'สรรพคุณทางยา'
+
+                Detail1Name.textContent = `ราก`;
+
+                Detail1Detail.textContent = `ยาสมุนไพรพื้นบ้านจังหวัดอุบลราชธานี ใช้ ราก ฝนกับน้ำดื่ม ช่วยลดไข้ในเด็ก ฝนทาแก้พิษงู(ต้องว่าคาถาด้วย) ต้มน้ำดื่ม บำรุงน้ำนม (กินมากไม่ดี) ราก เหง้า ลำต้น ใบ ฝนทาฝี`;
+
+                Detail1Row.appendChild(Detail1NameHeader);
+                Detail1Row.appendChild(Detail1Name);
+                Detail1Row.appendChild(Detail1Detail);
+
+                tableDetail.appendChild(Detail1Row);
+
+                if(containerBodyDetail.getAttribute('value') !== plantId) {
+                    containerBodyDetail.innerHTML = '';
+                    containerBodyDetail.appendChild(tableDetail);
+                    containerBodyDetail.setAttribute("value", 1);
+                }
+            }
+            else if(plantName === "เทพทาโร") {
+                
+                var containerDetail = document.createElement("div");
+                var tableDetail = document.createElement("table");
+                var Detail1Row = document.createElement("tr");
+                var Detail1NameHeader = document.createElement("th");
+                var Detail2NameHeader = document.createElement("th");
+                var Detail1Name = document.createElement("td"); 
+                var Detail1Detail = document.createElement("td"); 
+                var Detail2Row = document.createElement("tr");
+                var Detail2Name = document.createElement("td"); 
+                var Detail2Detail = document.createElement("td"); 
+
+                Detail1NameHeader.textContent = 'สรรพคุณทางยา';
+                Detail1Name.textContent = `ใบ`;
+                Detail1Detail.textContent = `รสร้อน ใช้ปรุงเป็นยาหอมแก้ลม จุกเสียดแน่นเฟ้อ แก้อาการปวดท้อง ขับผายลมได้ดี ขับลมในลำไส้และกระเพาะอาหารให้เรอ เป็นยาบำรุงธาตุ ขับเสมหะ`;
+
+                Detail1Row.appendChild(Detail1NameHeader);
+                Detail1Row.appendChild(Detail1Name);
+                Detail1Row.appendChild(Detail1Detail);
+
+                Detail2NameHeader.textContent = "";
+                Detail2Name.textContent = 'เปลือก';
+                Detail2Detail.textContent = "รสร้อน มีน้ำมันระเหย 1-25 % และแทนนิน แก้ลมจุกเสียด แน่นเฟ้อ แก้ปวดท้อง ขับลมในลำไส้และกระเพาะอาหาร บำรุงธาตุ";
+
+                Detail2Row.appendChild(Detail2NameHeader);
+                Detail2Row.appendChild(Detail2Name);
+                Detail2Row.appendChild(Detail2Detail);
+
+                tableDetail.appendChild(Detail1Row);
+                tableDetail.appendChild(Detail2Row);
+                
+                if(containerBodyDetail.getAttribute('value') !== plantId) {
+                    containerBodyDetail.innerHTML = '';
+                    containerBodyDetail.appendChild(tableDetail);
+                    containerBodyDetail.setAttribute("value", 2);
+                }
+            }
+        }
+    </script>
+</body>
